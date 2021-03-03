@@ -1,3 +1,18 @@
+/*
+ * Copyright 2021 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.example.androiddevchallenge
 
 import android.os.Bundle
@@ -6,29 +21,29 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.aspectRatio
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
+import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
 import androidx.compose.material.IconToggleButton
 import androidx.compose.material.Text
-import androidx.compose.material.IconButton
-import androidx.compose.material.Icon
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.sharp.ArrowBack
 import androidx.compose.material.icons.sharp.Bookmark
-import androidx.compose.material.icons.sharp.Phone
-import androidx.compose.material.icons.sharp.Male
 import androidx.compose.material.icons.sharp.Female
+import androidx.compose.material.icons.sharp.Male
+import androidx.compose.material.icons.sharp.Phone
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -69,20 +84,21 @@ class DetailActivity : AppCompatActivity() {
             }
         }
     }
-
 }
 
 @Composable
-fun DetailPage(monster: Monster, onBackClick:() -> Unit) {
+fun DetailPage(monster: Monster, onBackClick: () -> Unit) {
     val checkedState = remember { mutableStateOf(true) }
     ConstraintLayout(
         modifier = Modifier
             .fillMaxWidth()
             .fillMaxHeight()
     ) {
-        val (headImage, headOverlay, monsterName, monsterKind, monsterSex,
+        val (
+            headImage, headOverlay, monsterName, monsterKind, monsterSex,
             masterName, masterAvatar, description,
-            createTime, collectButton, contactButton) = createRefs()
+            createTime, collectButton, contactButton
+        ) = createRefs()
 
         val (navigationSpace) = createRefs()
 
@@ -259,7 +275,6 @@ fun DetailPage(monster: Monster, onBackClick:() -> Unit) {
             Row(
                 modifier = Modifier
                     .clickable {
-
                     }
                     .padding(start = 12.dp, top = 10.dp, end = 12.dp, bottom = 10.dp),
                 horizontalArrangement = Arrangement.Center
@@ -273,10 +288,12 @@ fun DetailPage(monster: Monster, onBackClick:() -> Unit) {
             }
         }
 
-        Spacer(modifier = Modifier
-            .navigationBarsHeight()
-            .constrainAs(navigationSpace) {
-                bottom.linkTo(parent.bottom)
-            })
+        Spacer(
+            modifier = Modifier
+                .navigationBarsHeight()
+                .constrainAs(navigationSpace) {
+                    bottom.linkTo(parent.bottom)
+                }
+        )
     }
 }

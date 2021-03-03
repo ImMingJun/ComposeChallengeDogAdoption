@@ -26,20 +26,20 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Scaffold
-import androidx.compose.material.TopAppBar
-import androidx.compose.material.Text
-import androidx.compose.material.IconButton
 import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
+import androidx.compose.material.Scaffold
+import androidx.compose.material.Text
+import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.sharp.AccountCircle
 import androidx.compose.material.icons.sharp.ContactPhone
@@ -125,17 +125,21 @@ fun MonsterItem(monster: Monster, onItemClick: (monster: Monster) -> Unit) {
         Column {
             Spacer(modifier = Modifier.height(8.dp))
             ConstraintLayout {
-                val (avatar, masterName, createTime, contact,
+                val (
+                    avatar, masterName, createTime, contact,
                     monsterImage, monsterName, monsterSex,
-                    monsterKind, monsterDescription) = createRefs()
+                    monsterKind, monsterDescription
+                ) = createRefs()
 
                 val (space1, space2) = createRefs()
 
-                Spacer(modifier = Modifier
-                    .width(12.dp)
-                    .constrainAs(space1) {
-                        start.linkTo(parent.start)
-                    })
+                Spacer(
+                    modifier = Modifier
+                        .width(12.dp)
+                        .constrainAs(space1) {
+                            start.linkTo(parent.start)
+                        }
+                )
 
                 Image(
                     painter = painterResource(id = monster.masterAvatar),
@@ -205,11 +209,13 @@ fun MonsterItem(monster: Monster, onItemClick: (monster: Monster) -> Unit) {
                         }
                 )
 
-                Spacer(modifier = Modifier
-                    .height(8.dp)
-                    .constrainAs(space2) {
-                        top.linkTo(monsterImage.bottom)
-                    })
+                Spacer(
+                    modifier = Modifier
+                        .height(8.dp)
+                        .constrainAs(space2) {
+                            top.linkTo(monsterImage.bottom)
+                        }
+                )
 
                 Text(
                     text = monster.name,
@@ -268,7 +274,6 @@ fun MonsterItem(monster: Monster, onItemClick: (monster: Monster) -> Unit) {
             }
             Spacer(modifier = Modifier.height(8.dp))
         }
-
     }
 }
 

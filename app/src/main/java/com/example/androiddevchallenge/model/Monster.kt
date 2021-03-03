@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.example.androiddevchallenge.model
 
 import androidx.compose.runtime.Immutable
@@ -26,13 +25,13 @@ data class Monster(
     val name: String,
     val description: String = "",
     val kind: String,
-    val sex: Int,// 0 male 1 female
+    val sex: Int, // 0 male 1 female
     val distance: String,
     val imageUrl: Int,
     val masterName: String,
     val masterAvatar: Int,
     val createTime: String,
-) :Serializable
+) : Serializable
 
 /**
  * A fake repo
@@ -115,4 +114,4 @@ val monsters = listOf(
         createTime = "1 hour ago",
     ),
 
-    )
+)
