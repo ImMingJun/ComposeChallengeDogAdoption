@@ -112,7 +112,7 @@ fun MonsterItem(monster: Monster, onItemClick: (monster: Monster) -> Unit) {
             ConstraintLayout {
                 val (avatar, masterName, createTime, contact,
                     monsterImage, monsterName, monsterSex,
-                    monsterKind, monsterDistance, monsterDescription) = createRefs()
+                    monsterKind, monsterDescription) = createRefs()
 
                 val (space1, space2) = createRefs()
 
