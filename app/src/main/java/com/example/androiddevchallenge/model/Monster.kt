@@ -18,6 +18,7 @@ package com.example.androiddevchallenge.model
 
 import androidx.compose.runtime.Immutable
 import com.example.androiddevchallenge.R
+import java.io.Serializable
 
 @Immutable // Tell Compose runtime that this object will not change so it can perform optimizations
 data class Monster(
@@ -31,7 +32,7 @@ data class Monster(
     val masterName: String,
     val masterAvatar: Int,
     val createTime: String,
-)
+) :Serializable
 
 /**
  * A fake repo
@@ -73,7 +74,7 @@ val monsters = listOf(
         sex = 1,
         distance = "5km",
         imageUrl = R.mipmap.monster3,
-        masterName = "Peter",
+        masterName = "Aime",
         masterAvatar = R.mipmap.avatar3,
         createTime = "21 minutes ago",
     ),
@@ -85,7 +86,7 @@ val monsters = listOf(
         sex = 0,
         distance = "100km",
         imageUrl = R.mipmap.monster4,
-        masterName = "Peter",
+        masterName = "XueLi",
         masterAvatar = R.mipmap.avatar4,
         createTime = "35 minutes ago",
     ),
@@ -97,7 +98,7 @@ val monsters = listOf(
         sex = 0,
         distance = "1km",
         imageUrl = R.mipmap.monster5,
-        masterName = "Peter",
+        masterName = "Aba Aba",
         masterAvatar = R.mipmap.avatar5,
         createTime = "51 minutes ago",
     ),
@@ -109,7 +110,7 @@ val monsters = listOf(
         sex = 0,
         distance = "10km",
         imageUrl = R.mipmap.monster6,
-        masterName = "Peter",
+        masterName = "Wooseidisy",
         masterAvatar = R.mipmap.avatar6,
         createTime = "1 hour ago",
     ),

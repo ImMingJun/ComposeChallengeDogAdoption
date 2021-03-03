@@ -15,7 +15,7 @@
  */
 package com.example.androiddevchallenge
 
-import android.graphics.fonts.FontStyle
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
@@ -34,7 +34,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
@@ -55,16 +54,19 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             MyTheme {
-                MyApp()
+                MyApp {
+                    val intent = Intent(this, DetailActivity::class.java)
+                    intent.putExtra("MONSTER", it)
+                    startActivity(intent)
+                }
             }
         }
     }
 }
 
 // Start building your app here!
-// Toast.makeText(, "hello",Toast.LENGTH_SHORT).show()
 @Composable
-fun MyApp() {
+fun MyApp(onItemClick: (monster: Monster) -> Unit) {
     val allMonsters = remember { MonsterRepo.getMonsters() }
     Scaffold(
         topBar = {
@@ -83,14 +85,14 @@ fun MyApp() {
     ) {
         LazyColumn {
             items(allMonsters) { monster ->
-                MonsterItem(monster = monster)
+                MonsterItem(monster = monster, onItemClick)
             }
         }
     }
 }
 
 @Composable
-fun MonsterItem(monster: Monster) {
+fun MonsterItem(monster: Monster, onItemClick: (monster: Monster) -> Unit) {
     Box(
         modifier = Modifier
             .padding(start = 12.dp, top = 6.dp, end = 12.dp, bottom = 6.dp)
@@ -102,7 +104,7 @@ fun MonsterItem(monster: Monster) {
             )
             .background(Color.White)
             .clickable(true) {
-
+                onItemClick(monster)
             }
     ) {
         Column {
@@ -259,7 +261,7 @@ fun MonsterItem(monster: Monster) {
 @Composable
 fun LightPreview() {
     MyTheme {
-        MyApp()
+        MyApp {}
     }
 }
 
@@ -267,6 +269,6 @@ fun LightPreview() {
 @Composable
 fun DarkPreview() {
     MyTheme(darkTheme = true) {
-        MyApp()
+        MyApp {}
     }
 }
